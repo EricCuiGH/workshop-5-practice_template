@@ -1,56 +1,37 @@
 /**
  * Server-Side Fetching Practice Exercise
  * 
- * GOAL: Fetch a list of users from an API and display them on the page
- * 
+ * GOAL: Complete the missing pieces to fetch and display users from an API
  * API ENDPOINT: https://jsonplaceholder.typicode.com/users
- * 
- * INSTRUCTIONS:
- * 1. Create a TypeScript interface for the User data
- * 2. Create an async function to fetch the users from the API
- * 3. Make this component async and call the fetch function
- * 4. Display the users in a nice card layout
- * 
- * TIPS:
- * - Remember that server components can be async!
- * - Use fetch() to get data from the API
- * - Don't forget to handle errors
- * - The API returns an array of user objects
  */
 
-// TODO: Step 1 - Define the User interface
-// Each user has: id, name, email, phone, website, and address (with city)
-// Example structure:
-// {
-//   "id": 1,
-//   "name": "Leanne Graham",
-//   "email": "Sincere@april.biz",
-//   "phone": "1-770-736-8031 x56442",
-//   "website": "hildegard.org",
-//   "address": {
-//     "city": "Gwenborough"
-//   }
-// }
-
+// Step 1: Complete the User interface (add the missing properties)
 interface User {
-  // TODO: Add the user properties here
+  id: number;
+  name: string;
+  email: string;
+  // TODO: Add phone property (string)
+  // TODO: Add website property (string)
+  address: {
+    city: string;
+  };
 }
 
-// TODO: Step 2 - Create an async function to fetch users
-// Function should:
-// - Use fetch() to get data from: https://jsonplaceholder.typicode.com/users
-// - Parse the JSON response
-// - Return the array of users
-// - Handle errors appropriately
-
-async function getUsers() {
-  // TODO: Implement the fetch logic here
+// Step 2: Complete the fetch function
+async function getUsers(): Promise<User[]> {
+  // TODO: Add the fetch URL here: 'https://jsonplaceholder.typicode.com/users'
+  const response = await fetch('PUT_URL_HERE');
+  const users: User[] = await response.json();
+  return users;
 }
 
-// TODO: Step 3 - Make this component async and fetch the data
+// Step 3: Add 'async' keyword to make this component async
+// TODO: Add 'async' before 'function' below
 export default function Home() {
-  // TODO: Call getUsers() here and store the result
-  
+  // Step 4: Call getUsers() and store the result
+  // TODO: Uncomment the line below
+  // const users = await getUsers();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <main className="max-w-6xl mx-auto">
@@ -61,23 +42,37 @@ export default function Home() {
           Fetched from JSONPlaceholder API
         </p>
 
-        {/* TODO: Step 4 - Map over the users and display them in cards */}
-        {/* 
-          Create a grid layout that displays each user in a card showing:
-          - Name (as heading)
-          - Email
-          - Phone
-          - Website
-          - City
-        */}
-        
+        {/* Step 5: Display the users */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* TODO: Map users here */}
+          {/* TODO: Replace the placeholder div below with the commented code */}
+          
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <p className="text-gray-500">
-              Users will appear here once you implement the fetch logic!
+              Users will appear here once you complete the steps above!
             </p>
           </div>
+
+          {/* TODO: Uncomment this code to display users:
+          
+          {users.map((user) => (
+            <div
+              key={user.id}
+              className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow"
+            >
+              <h2 className="text-xl font-semibold text-gray-800 mb-3">
+                {user.name}
+              </h2>
+              
+              <div className="space-y-2 text-sm text-gray-700">
+                <p>📧 {user.email}</p>
+                <p>📱 {user.phone}</p>
+                <p>🌐 {user.website}</p>
+                <p>📍 {user.address.city}</p>
+              </div>
+            </div>
+          ))}
+          
+          */}
         </div>
       </main>
     </div>

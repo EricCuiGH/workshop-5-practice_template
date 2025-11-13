@@ -2,66 +2,48 @@
 
 ## 🎯 Learning Objective
 
-Practice fetching data from an API using Next.js server-side components.
+Practice fetching data from an API using Next.js server-side components by completing a partially-built user directory.
 
 ## 📝 Exercise Instructions
 
-Your task is to fetch a list of users from an API and display them on the page.
+Your task is to **complete 5 simple steps** to fetch and display users from an API.
 
 ### API Information
 
 - **API URL**: `https://jsonplaceholder.typicode.com/users`
-- **No API Key Required**: This is a free, public API
-- **Returns**: An array of 10 user objects
+- **No API Key Required**: This is a free, public API - just use the URL!
 
-### User Data Structure
+## ✅ 5 Simple Steps to Complete
 
-Each user object contains:
-```json
-{
-  "id": 1,
-  "name": "Leanne Graham",
-  "email": "Sincere@april.biz",
-  "phone": "1-770-736-8031 x56442",
-  "website": "hildegard.org",
-  "address": {
-    "city": "Gwenborough"
-  }
-}
+### Step 1: Complete the User Interface ✏️
+Add two missing properties to the `User` interface:
+- `phone` (string)
+- `website` (string)
+
+### Step 2: Add the API URL 🔗
+Replace `'PUT_URL_HERE'` with the actual API URL:
+```typescript
+'https://jsonplaceholder.typicode.com/users'
 ```
 
-## ✅ Steps to Complete
+### Step 3: Make Component Async ⚡
+Add the `async` keyword before `function Home()`
 
-1. **Define the User Interface**
-   - Create a TypeScript interface matching the user data structure
-   - Include: id, name, email, phone, website, and address (with city)
+### Step 4: Call the Fetch Function 📞
+Uncomment this line:
+```typescript
+const users = await getUsers();
+```
 
-2. **Create the Fetch Function**
-   - Write an async function called `getUsers()`
-   - Use `fetch()` to get data from the API
-   - Parse the JSON response
-   - Handle errors appropriately
-   - Return the array of users
+### Step 5: Display the Users 🎨
+Remove the placeholder div and uncomment the `users.map()` code that's already written for you!
 
-3. **Make the Component Async**
-   - Add the `async` keyword to the Home component
-   - Call `getUsers()` and store the result in a variable
+## 💡 What You're Learning
 
-4. **Display the Data**
-   - Map over the users array
-   - Display each user in a card showing:
-     - Name (as a heading)
-     - Email
-     - Phone
-     - Website
-     - City
-
-## 💡 Key Concepts
-
-- **Server Components**: In Next.js 13+, components are server components by default
-- **Async Components**: Server components can be async, which is perfect for data fetching
-- **No useState/useEffect**: Server-side fetching doesn't need React hooks
-- **SEO Benefits**: Data is rendered on the server, improving initial load and SEO
+- **Server Components**: Components that run on the server and can be async
+- **fetch()**: How to get data from an API
+- **async/await**: Modern JavaScript for handling asynchronous operations
+- **TypeScript**: Type-safe interfaces for API data
 
 ## 🚀 Getting Started
 
@@ -74,24 +56,35 @@ Open [http://localhost:3000](http://localhost:3000) to see your app.
 
 ## 🔍 Testing Your Solution
 
-Your implementation is working correctly when:
-- The page displays 10 user cards
-- Each card shows the user's name, email, phone, website, and city
-- The page loads with the data already rendered (no loading spinner needed!)
+Your implementation is working when:
+- ✅ No TypeScript errors in your editor
+- ✅ The dev server runs without errors
+- ✅ You see 10 user cards displayed on the page
+- ✅ Each card shows name, email, phone, website, and city
 
 ## 💪 Bonus Challenges
 
-If you finish early, try these:
+If you finish early:
 
-1. **Add Error Handling UI**: Display a user-friendly error message if the fetch fails
-2. **Add Styling**: Make the cards more visually appealing
-3. **Add More Fields**: Display additional user information like company name
-4. **Add Search**: Create a search bar to filter users (hint: this will require a client component!)
+1. **Add Error Handling**: Wrap the fetch in a try-catch block
+2. **Add More Styling**: Change colors or add more hover effects
+3. **Display More Fields**: Show the user's `username` or `company.name`
 
 ## 📚 Resources
 
-- [Next.js Data Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching)
-- [JSONPlaceholder API](https://jsonplaceholder.typicode.com/)
+- [Next.js Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components)
+- [Using fetch()](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [TypeScript Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)
+
+## ❓ Common Questions
+
+**Q: Why don't we use useState or useEffect?**  
+A: Server components run once on the server. No re-rendering = no state needed!
+
+**Q: Where does this code run?**  
+A: On your Next.js server, before the HTML is sent to the browser.
+
+**Q: What if I get stuck?**  
+A: Check the instructor's completed version in `workshop-5-practice_complete`!
 
 Good luck! 🎉
